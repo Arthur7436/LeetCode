@@ -3,48 +3,43 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace 
+namespace
 {
-    public class RemoveDuplicates
+    public class Solution
     {
-        public class Solution {
-    public int RemoveDuplicates(int[] nums) {
-        //turn array into string
-        //loop through string to see if there are any duplicates
-        //if there are duplicates then remove the duplicate
-        //count how many duplicates have been removed
-        //return output
+        public int RemoveDuplicates(int[] nums)
+        {
+            List<int> arrayList = nums.ToList();
+            int duplicateRemovalCount = 0;
 
-        string array = nums.ToString();
-        int duplicateRemovalCount = 0;
-
-        for(int i = 0; i < array.Length; i++){
-            for(int j = i + 1; i < array.Length; j++){
-                //Find any duplicates 
-                if(array[i] == array[j]){
-                    int indexToRemoveAt = j;
-                    duplicateRemovalCount++;
-                    //remove the index from the array by creating a new array
-                    for(int k = 0, l = 0; i < array.Length;i++){
-                        if(array[k] != array[l]){
-                            array[l++] = array[k];
-                        }
+            //find the duplicate and remove it
+            for (int i = 0; i < array.Length; i++)
+            {
+                for (int j = i + 1; i < array.Length; j++)
+                {
+                    if (arrayList[i] == arrayList[j])
+                    {
+                        arrayList.RemoveAt(j);
+                        duplicateRemovalCount++;
                     }
                 }
             }
-        }
 
-        for(int i = 0; i < duplicateRemovalCount; i++){
-            array = array.Add("_");
-        }
+            //replace the duplicates with "_"
+            for (int i = 0; i < duplicateRemovalCount; i++)
+            {
+                arrayList.Add("_");
+            }
 
-        int count = 0;
-        for(int i = 0; i < array.Length;i++){
-            count++;
-        }
+            //count how many are left in the list
+            int count = 0;
+            for (int i = 0; i < arrayList.Length; i++)
+            {
+                count++;
+            }
 
-        return $"{count} ,nums = {array}";
-    }
-}
+            string array = arrayList.ToString();
+            return $"{count} ,nums = {array}";
+        }
     }
 }
