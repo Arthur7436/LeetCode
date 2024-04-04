@@ -13,9 +13,9 @@ namespace
             int duplicateRemovalCount = 0;
 
             //find the duplicate and remove it
-            for (int i = 0; i < array.Length; i++)
+            for (int i = 0; i < arrayList.Length; i++)
             {
-                for (int j = i + 1; i < array.Length; j++)
+                for (int j = i + 1; i < arrayList.Length; j++)
                 {
                     if (arrayList[i] == arrayList[j])
                     {
